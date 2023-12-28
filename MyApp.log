@@ -22,7 +22,7 @@ ERROR in ch.qos.logback.core.pattern.parser.Compiler@6b00f608 - Failed to create
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:329)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1358)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1347)
-	at org.skidrow.logcleanupexamples.LogCleanupExamplesApplication.main(LogCleanupExamplesApplication.java:18)
+	at org.skidrow.logmaskexample.LogCleanupExamplesApplication.main(LogCleanupExamplesApplication.java:18)
 Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
 ERROR in ch.qos.logback.core.pattern.parser.Compiler@5e1fa5b1 - Failed to instantiate converter class [com.example.helloworld.converter.LogMaskConverter] as a composite converter for keyword [mask] ch.qos.logback.core.util.DynamicClassLoadingException: Failed to instantiate type com.example.helloworld.converter.LogMaskConverter
 ERROR in ch.qos.logback.core.pattern.parser.Compiler@5e1fa5b1 - Failed to create converter for [%mask] keyword
@@ -121,7 +121,7 @@ ERROR in ch.qos.logback.core.pattern.parser.Compiler@5e1fa5b1 - Failed to create
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:329)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1358)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1347)
-	at org.skidrow.logcleanupexamples.LogCleanupExamplesApplication.main(LogCleanupExamplesApplication.java:18)
+	at org.skidrow.logmaskexample.LogCleanupExamplesApplication.main(LogCleanupExamplesApplication.java:18)
 Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
 ERROR in ch.qos.logback.core.pattern.parser.Compiler@5e1fa5b1 - There is no conversion class registered for composite conversion word [mask]
 ERROR in ch.qos.logback.core.pattern.parser.Compiler@5e1fa5b1 - Failed to create converter for [%mask] keyword

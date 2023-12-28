@@ -1,4 +1,4 @@
-package org.skidrow.logcleanupexamples;
+package org.skidrow.logmaskexample;
 
 import ch.qos.logback.classic.pattern.ClassicConverter;
 import ch.qos.logback.classic.spi.ILoggingEvent;

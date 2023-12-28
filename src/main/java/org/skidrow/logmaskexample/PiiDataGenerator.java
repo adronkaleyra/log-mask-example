@@ -1,4 +1,4 @@
-package org.skidrow.logcleanupexamples;
+package org.skidrow.logmaskexample;
 
 import net.datafaker.Faker;
 

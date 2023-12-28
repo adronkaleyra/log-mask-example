@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>org.skidrow</groupId>
-    <artifactId>log-cleanup-examples</artifactId>
+    <artifactId>log-mask-example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>log-cleanup-examples</name>
     <description>log-cleanup-examples</description>
