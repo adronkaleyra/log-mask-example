@@ -2,7 +2,9 @@ package org.skidrow.logmaskexample;
 
 import ch.qos.logback.classic.pattern.ClassicConverter;
 import ch.qos.logback.classic.spi.ILoggingEvent;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PiiMaskingConverter extends ClassicConverter {
 
     @Override
@@ -10,7 +12,10 @@ public class PiiMaskingConverter extends ClassicConverter {
         return maskEmail(event.getFormattedMessage());
     }
 
+
     private String maskEmail(String message) {
+
+        // Where I need to pull in the setting from application.properties.
 
         boolean turnOn = true;
 
