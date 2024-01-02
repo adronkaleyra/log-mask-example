@@ -10,7 +10,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 @SpringBootApplication
 @EnableScheduling
 public class LogCleanupExamplesApplication {
-
     private static final Logger logger = LoggerFactory.getLogger(LogCleanupExamplesApplication.class);
 
     public static void main(String[] args) {
