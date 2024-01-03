@@ -2,9 +2,28 @@ package org.skidrow.logmaskexample;
 
 import ch.qos.logback.classic.pattern.ClassicConverter;
 import ch.qos.logback.classic.spi.ILoggingEvent;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.core.env.Environment;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+
 public class PiiMaskingConverter extends ClassicConverter {
+
+    private List<PiiRegexPattern> patterns;
+
+    public PiiMaskingConverter() throws IOException {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            InputStream is = getClass().getResourceAsStream("/regexMasks.json");
+            patterns = mapper.readValue(is, new TypeReference<>() {
+            });
+        } catch (IOException e) {
+            throw new IOException("Error reading regex_patterns.json", e);
+        }
+    }
 
     @Override
     public String convert(ILoggingEvent event) {
@@ -12,17 +31,14 @@ public class PiiMaskingConverter extends ClassicConverter {
     }
 
     private String maskMessage(String message) {
+
         boolean turnOn = getMaskingEnabled();
         if (!turnOn)
             return message;
-        String emailAddressRegex = "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b";
-        message = message.replaceAll(emailAddressRegex, "****");
-        String ipAddressRegex = "\\b(?:[0-9]{1,3}\\.){3}[0-9]{1,3}\\b";
-        message = message.replaceAll(ipAddressRegex, "****");
-        String phoneRegex = "\\b(1[-+]?\\s?)?(\\(\\d{3}\\)\\s?\\d{3}[-.]?\\d{4}|\\d{3}[-.]?\\d{3}[-.]?\\d{4})\\b";
-        message = message.replaceAll(phoneRegex, "****");
-        String internationalPhoneRegex = "\\b\\+?\\d{1,3}?[-.\\s]?\\d{1,4}?[-.\\s]?\\d{1,4}?[-.\\s]?\\d{1,4}(?:\\s*x\\d{1,5})?\\b";
-        message = message.replaceAll(internationalPhoneRegex, "****");
+        for (PiiRegexPattern pattern : patterns) {
+            message = message.replaceAll(pattern.getRegex().toString(), "****");
+        }
+
         return message;
     }
 

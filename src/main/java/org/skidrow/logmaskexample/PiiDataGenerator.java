@@ -19,11 +19,15 @@ public class PiiDataGenerator {
         String phone = faker.phoneNumber().cellPhone();
         String international = faker.phoneNumber().phoneNumberInternational();
         String nationalNumber = faker.phoneNumber().phoneNumberNational();
+        String socialSecurity = faker.idNumber().ssnValid();
+        String creditCard = faker.finance().creditCard();
 
         return "Email: " + email +
                 ", IP: " + ip +
                 ", Phone: " + phone +
                 ", International: " + international +
-                ", National: " + nationalNumber;
+                ", National: " + nationalNumber +
+                ", Social Security: " + socialSecurity +
+                ", Credit Card: " + creditCard;
     }
 }
